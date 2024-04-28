@@ -9,7 +9,7 @@ from fastapi import FastAPI, Path
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import RedirectResponse
 from app.api.routers.chat import chat_router
-from app.api.routers.ingest import chat_router
+from app.api.routers.ingest import ingest_router
 #from app.api.routers.ingest import ingest_router
 from app.settings import init_settings
 from requests.auth import HTTPBasicAuth
@@ -45,7 +45,8 @@ if environment == "dev":
     async def redirect_to_docs():
         return RedirectResponse(url="/docs")
 
-
+    app.include_router(ingest_router, prefix="/api/ingest")
+    
     app.include_router(chat_router, prefix="/api/chat")
     def list_contents(directory):
         """List all contents of a WebDAV directory given a directory path."""
