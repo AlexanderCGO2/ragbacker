@@ -9,6 +9,7 @@ from fastapi import FastAPI, Path
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import RedirectResponse
 from app.api.routers.chat import chat_router
+from app.api.routers.ingest import chat_router
 #from app.api.routers.ingest import ingest_router
 from app.settings import init_settings
 from requests.auth import HTTPBasicAuth

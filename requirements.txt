@@ -1,110 +1,166 @@
-gunicorn==20.1.0 ; python_full_version >= "3.11.9" and python_version < "3.13"
-aiohttp==3.9.5 ; python_full_version >= "3.11.9" and python_version < "3.13"
-aiosignal==1.3.1 ; python_full_version >= "3.11.9" and python_version < "3.13"
-annotated-types==0.6.0 ; python_full_version >= "3.11.9" and python_version < "3.13"
-anyio==4.3.0 ; python_full_version >= "3.11.9" and python_version < "3.13"
-attrs==23.2.0 ; python_full_version >= "3.11.9" and python_version < "3.13"
-beautifulsoup4==4.12.3 ; python_full_version >= "3.11.9" and python_version < "3.13"
-certifi==2024.2.2 ; python_full_version >= "3.11.9" and python_version < "3.13"
-cffi==1.16.0 ; os_name == "nt" and implementation_name != "pypy" and python_full_version >= "3.11.9" and python_version < "3.13"
-charset-normalizer==3.3.2 ; python_full_version >= "3.11.9" and python_version < "3.13"
-chromedriver-autoinstaller==0.6.4 ; python_full_version >= "3.11.9" and python_version < "3.13"
-click==8.1.7 ; python_full_version >= "3.11.9" and python_version < "3.13"
-colorama==0.4.6 ; python_full_version >= "3.11.9" and python_version < "3.13" and (sys_platform == "win32" or platform_system == "Windows")
-cssselect==1.2.0 ; python_full_version >= "3.11.9" and python_version < "3.13"
-dataclasses-json==0.6.4 ; python_full_version >= "3.11.9" and python_version < "3.13"
-deprecated==1.2.14 ; python_full_version >= "3.11.9" and python_version < "3.13"
-dirtyjson==1.0.8 ; python_full_version >= "3.11.9" and python_version < "3.13"
-distro==1.9.0 ; python_full_version >= "3.11.9" and python_version < "3.13"
-docx2txt==0.8 ; python_full_version >= "3.11.9" and python_version < "3.13"
-fastapi==0.109.2 ; python_full_version >= "3.11.9" and python_version < "3.13"
-feedfinder2==0.0.4 ; python_full_version >= "3.11.9" and python_version < "3.13"
-feedparser==6.0.11 ; python_full_version >= "3.11.9" and python_version < "3.13"
-filelock==3.13.4 ; python_full_version >= "3.11.9" and python_version < "3.13"
-frozenlist==1.4.1 ; python_full_version >= "3.11.9" and python_version < "3.13"
-fsspec==2024.3.1 ; python_full_version >= "3.11.9" and python_version < "3.13"
-greenlet==3.0.3 ; python_full_version >= "3.11.9" and python_version < "3.13"
-h11==0.14.0 ; python_full_version >= "3.11.9" and python_version < "3.13"
-html2text==2020.1.16 ; python_full_version >= "3.11.9" and python_version < "3.13"
-httpcore==1.0.5 ; python_full_version >= "3.11.9" and python_version < "3.13"
-httptools==0.6.1 ; python_full_version >= "3.11.9" and python_version < "3.13"
-httpx==0.27.0 ; python_full_version >= "3.11.9" and python_version < "3.13"
-idna==3.7 ; python_full_version >= "3.11.9" and python_version < "3.13"
-jieba3k==0.35.1 ; python_full_version >= "3.11.9" and python_version < "3.13"
-joblib==1.4.0 ; python_full_version >= "3.11.9" and python_version < "3.13"
-llama-index-agent-openai==0.1.5 ; python_full_version >= "3.11.9" and python_version < "3.13"
-llama-index-cli==0.1.11 ; python_full_version >= "3.11.9" and python_version < "3.13"
-llama-index-core==0.10.15 ; python_full_version >= "3.11.9" and python_version < "3.13"
-llama-index-embeddings-openai==0.1.7 ; python_full_version >= "3.11.9" and python_version < "3.13"
-llama-index-indices-managed-llama-cloud==0.1.5 ; python_full_version >= "3.11.9" and python_version < "3.13"
-llama-index-legacy==0.9.48 ; python_full_version >= "3.11.9" and python_version < "3.13"
-llama-index-llms-openai==0.1.8 ; python_full_version >= "3.11.9" and python_version < "3.13"
-llama-index-multi-modal-llms-openai==0.1.5 ; python_full_version >= "3.11.9" and python_version < "3.13"
-llama-index-program-openai==0.1.5 ; python_full_version >= "3.11.9" and python_version < "3.13"
-llama-index-question-gen-openai==0.1.3 ; python_full_version >= "3.11.9" and python_version < "3.13"
-llama-index-readers-file==0.1.19 ; python_full_version >= "3.11.9" and python_version < "3.13"
-llama-index-readers-llama-parse==0.1.4 ; python_full_version >= "3.11.9" and python_version < "3.13"
-llama-index-readers-web==0.1.9 ; python_full_version >= "3.11.9" and python_version < "3.13"
-llama-index-vector-stores-pinecone==0.1.4 ; python_full_version >= "3.11.9" and python_version < "3.13"
-llama-index==0.10.15 ; python_full_version >= "3.11.9" and python_version < "3.13"
-llama-parse==0.4.0 ; python_full_version >= "3.11.9" and python_version < "3.13"
-llamaindex-py-client==0.1.18 ; python_full_version >= "3.11.9" and python_version < "3.13"
-lxml==5.2.1 ; python_full_version >= "3.11.9" and python_version < "3.13"
-marshmallow==3.21.1 ; python_full_version >= "3.11.9" and python_version < "3.13"
-multidict==6.0.5 ; python_full_version >= "3.11.9" and python_version < "3.13"
-mypy-extensions==1.0.0 ; python_full_version >= "3.11.9" and python_version < "3.13"
-nest-asyncio==1.6.0 ; python_full_version >= "3.11.9" and python_version < "3.13"
-networkx==3.3 ; python_full_version >= "3.11.9" and python_version < "3.13"
-newspaper3k==0.2.8 ; python_full_version >= "3.11.9" and python_version < "3.13"
-nltk==3.8.1 ; python_full_version >= "3.11.9" and python_version < "3.13"
-numpy==1.26.4 ; python_full_version >= "3.11.9" and python_version < "3.13"
-openai==1.20.0 ; python_full_version >= "3.11.9" and python_version < "3.13"
-outcome==1.3.0.post0 ; python_full_version >= "3.11.9" and python_version < "3.13"
-packaging==24.0 ; python_full_version >= "3.11.9" and python_version < "3.13"
-pandas==2.2.2 ; python_full_version >= "3.11.9" and python_version < "3.13"
-pillow==10.3.0 ; python_full_version >= "3.11.9" and python_version < "3.13"
-pinecone-client==3.2.2 ; python_full_version >= "3.11.9" and python_version < "3.13"
-playwright==1.43.0 ; python_full_version >= "3.11.9" and python_version < "3.13"
-pycparser==2.22 ; os_name == "nt" and implementation_name != "pypy" and python_full_version >= "3.11.9" and python_version < "3.13"
-pydantic-core==2.18.1 ; python_full_version >= "3.11.9" and python_version < "3.13"
-pydantic==2.7.0 ; python_full_version >= "3.11.9" and python_version < "3.13"
-pyee==11.1.0 ; python_full_version >= "3.11.9" and python_version < "3.13"
-pypdf==4.2.0 ; python_full_version >= "3.11.9" and python_version < "3.13"
-pysocks==1.7.1 ; python_full_version >= "3.11.9" and python_version < "3.13"
-python-dateutil==2.9.0.post0 ; python_full_version >= "3.11.9" and python_version < "3.13"
-python-dotenv==1.0.1 ; python_full_version >= "3.11.9" and python_version < "3.13"
-python-pptx==0.6.23 ; python_full_version >= "3.11.9" and python_version < "3.13"
-pytz==2024.1 ; python_full_version >= "3.11.9" and python_version < "3.13"
-pyyaml==6.0.1 ; python_full_version >= "3.11.9" and python_version < "3.13"
-regex==2023.12.25 ; python_full_version >= "3.11.9" and python_version < "3.13"
-requests-file==2.0.0 ; python_full_version >= "3.11.9" and python_version < "3.13"
-requests==2.31.0 ; python_full_version >= "3.11.9" and python_version < "3.13"
-selenium==4.19.0 ; python_full_version >= "3.11.9" and python_version < "3.13"
-sgmllib3k==1.0.0 ; python_full_version >= "3.11.9" and python_version < "3.13"
-six==1.16.0 ; python_full_version >= "3.11.9" and python_version < "3.13"
-sniffio==1.3.1 ; python_full_version >= "3.11.9" and python_version < "3.13"
-sortedcontainers==2.4.0 ; python_full_version >= "3.11.9" and python_version < "3.13"
-soupsieve==2.5 ; python_full_version >= "3.11.9" and python_version < "3.13"
-sqlalchemy[asyncio]==2.0.29 ; python_full_version >= "3.11.9" and python_version < "3.13"
-starlette==0.36.3 ; python_full_version >= "3.11.9" and python_version < "3.13"
-striprtf==0.0.26 ; python_full_version >= "3.11.9" and python_version < "3.13"
-tenacity==8.2.3 ; python_full_version >= "3.11.9" and python_version < "3.13"
-tiktoken==0.6.0 ; python_full_version >= "3.11.9" and python_version < "3.13"
-tinysegmenter==0.3 ; python_full_version >= "3.11.9" and python_version < "3.13"
-tldextract==5.1.2 ; python_full_version >= "3.11.9" and python_version < "3.13"
-tqdm==4.66.2 ; python_full_version >= "3.11.9" and python_version < "3.13"
-trio-websocket==0.11.1 ; python_full_version >= "3.11.9" and python_version < "3.13"
-trio==0.25.0 ; python_full_version >= "3.11.9" and python_version < "3.13"
-typing-extensions==4.11.0 ; python_full_version >= "3.11.9" and python_version < "3.13"
-typing-inspect==0.9.0 ; python_full_version >= "3.11.9" and python_version < "3.13"
-tzdata==2024.1 ; python_full_version >= "3.11.9" and python_version < "3.13"
-urllib3==2.2.1 ; python_full_version >= "3.11.9" and python_version < "3.13"
-urllib3[socks]==2.2.1 ; python_full_version >= "3.11.9" and python_version < "3.13"
-uvicorn[standard]==0.23.2 ; python_full_version >= "3.11.9" and python_version < "3.13"
-uvloop==0.19.0 ; (sys_platform != "win32" and sys_platform != "cygwin") and platform_python_implementation != "PyPy" and python_full_version >= "3.11.9" and python_version < "3.13"
-watchfiles==0.21.0 ; python_full_version >= "3.11.9" and python_version < "3.13"
-websockets==12.0 ; python_full_version >= "3.11.9" and python_version < "3.13"
-wrapt==1.16.0 ; python_full_version >= "3.11.9" and python_version < "3.13"
-wsproto==1.2.0 ; python_full_version >= "3.11.9" and python_version < "3.13"
-xlsxwriter==3.2.0 ; python_full_version >= "3.11.9" and python_version < "3.13"
-yarl==1.9.4 ; python_full_version >= "3.11.9" and python_version < "3.13"
+aiohttp==3.9.5
+aiosignal==1.3.1
+amqp==5.2.0
+annotated-types==0.6.0
+anyio==4.3.0
+arrow==1.3.0
+attrs==23.2.0
+autopep8==2.0.4
+beautifulsoup4==4.12.3
+billiard==4.2.0
+binaryornot==0.4.4
+cachetools==5.3.3
+celery==5.4.0
+certifi==2024.2.2
+chardet==5.2.0
+charset-normalizer==3.3.2
+chromedriver-autoinstaller==0.6.4
+click==8.1.7
+click-didyoumean==0.3.1
+click-plugins==1.1.1
+click-repl==0.3.0
+cookiecutter==2.5.0
+cssselect==1.2.0
+dataclasses-json==0.6.4
+Deprecated==1.2.14
+dirtyjson==1.0.8
+distlib==0.3.8
+distro==1.9.0
+docx2txt==0.8
+fastapi==0.109.2
+feedfinder2==0.0.4
+feedparser==6.0.11
+filelock==3.13.4
+frozenlist==1.4.1
+fsspec==2024.3.1
+google-api-core==2.18.0
+google-api-python-client==2.126.0
+google-auth==2.29.0
+google-auth-httplib2==0.2.0
+google-auth-oauthlib==1.2.0
+googleapis-common-protos==1.63.0
+greenlet==3.0.3
+gunicorn==21.2.0
+h11==0.14.0
+html2text==2020.1.16
+httpcore==1.0.5
+httplib2==0.22.0
+httptools==0.6.1
+httpx==0.27.0
+idna==3.7
+jieba3k==0.35.1
+Jinja2==3.1.3
+joblib==1.4.0
+jsonpatch==1.33
+jsonpointer==2.4
+kombu==5.3.7
+llama-index==0.10.15
+llama-index-agent-openai==0.1.5
+llama-index-cli==0.1.11
+llama-index-core==0.10.15
+llama-index-embeddings-openai==0.1.7
+llama-index-extractors-marvin==0.1.3
+llama-index-indices-managed-llama-cloud==0.1.5
+llama-index-legacy==0.9.48
+llama-index-llms-openai==0.1.8
+llama-index-multi-modal-llms-openai==0.1.5
+llama-index-program-openai==0.1.5
+llama-index-question-gen-openai==0.1.3
+llama-index-readers-file==0.1.19
+llama-index-readers-llama-parse==0.1.4
+llama-index-readers-web==0.1.9
+llama-index-tools-google==0.1.3
+llama-index-tools-wikipedia==0.1.3
+llama-index-vector-stores-pinecone==0.1.4
+llama-parse==0.4.0
+llamaindex-py-client==0.1.18
+lxml==5.2.1
+markdown-it-py==3.0.0
+MarkupSafe==2.1.5
+marshmallow==3.21.1
+marvin==2.3.1
+mdurl==0.1.2
+multidict==6.0.5
+mypy-extensions==1.0.0
+nest-asyncio==1.6.0
+networkx==3.3
+newspaper3k==0.2.8
+nltk==3.8.1
+numpy==1.26.4
+oauthlib==3.2.2
+openai==1.20.0
+outcome==1.3.0.post0
+packaging==24.0
+pandas==2.2.2
+partialjson==0.0.7
+pillow==10.3.0
+pinecone-client==3.2.2
+pipenv==2023.12.1
+playwright==1.43.0
+prompt-toolkit==3.0.43
+proto-plus==1.23.0
+protobuf==4.25.3
+pyasn1==0.6.0
+pyasn1_modules==0.4.0
+pycodestyle==2.11.1
+pydantic==2.7.0
+pydantic-settings==2.2.1
+pydantic_core==2.18.1
+pyee==11.1.0
+Pygments==2.17.2
+pyparsing==3.1.2
+pypdf==4.2.0
+PyPDF2==3.0.1
+PySocks==1.7.1
+python-dateutil==2.9.0.post0
+python-docx==1.1.0
+python-dotenv==1.0.1
+python-multipart==0.0.9
+python-pptx==0.6.23
+python-slugify==8.0.4
+pytz==2024.1
+PyYAML==6.0.1
+regex==2023.12.25
+requests==2.31.0
+requests-file==2.0.0
+requests-oauthlib==2.0.0
+rich==13.7.0
+rsa==4.9
+selenium==4.19.0
+sgmllib3k==1.0.0
+shellingham==1.5.4
+six==1.16.0
+sniffio==1.3.1
+sortedcontainers==2.4.0
+soupsieve==2.5
+SQLAlchemy==2.0.29
+starlette==0.36.3
+striprtf==0.0.26
+tenacity==8.2.3
+text-unidecode==1.3
+tiktoken==0.6.0
+tinysegmenter==0.3
+tldextract==5.1.2
+tqdm==4.66.2
+trio==0.25.0
+trio-websocket==0.11.1
+typer==0.12.3
+types-python-dateutil==2.8.19.20240106
+typing-inspect==0.9.0
+typing_extensions==4.11.0
+tzdata==2024.1
+uritemplate==4.1.1
+urllib3==2.2.1
+uvicorn==0.23.2
+uvloop==0.19.0
+vine==5.1.0
+virtualenv==20.25.0
+watchfiles==0.21.0
+wcwidth==0.2.13
+webdavclient3==3.14.6
+websockets==12.0
+wikipedia==1.4.0
+wrapt==1.16.0
+wsproto==1.2.0
+XlsxWriter==3.2.0
+yarl==1.9.4
