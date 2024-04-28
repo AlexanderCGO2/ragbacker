@@ -7,7 +7,7 @@ import shutil
 from llama_index.core.readers import SimpleDirectoryReader
 from llama_parse import LlamaParse
 import logging
-from metadata import extract_metadata_and_text
+
 
 # Load environment variables
 load_dotenv()
