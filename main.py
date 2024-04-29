@@ -39,19 +39,7 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-origins = [
-    "https://zpunkt.flutterflow.app",
-        # Add your allowed domain here
-    # You can add more domains if needed
-]
 
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=origins,
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
 
 # Redirect to documentation page when accessing base URL
 @app.get("/")
