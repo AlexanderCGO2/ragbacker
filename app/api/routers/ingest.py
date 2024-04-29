@@ -17,20 +17,25 @@ import firebase_admin
 import base64
 from firebase_admin import credentials, firestore
 
+firebase_config = {
+    "type": os.getenv("FIREBASE_TYPE"),
+    "project_id": os.getenv("FIREBASE_PROJECT_ID"),
+    "private_key_id": os.getenv("FIREBASE_PRIVATE_KEY_ID"),
+    "private_key": os.getenv("FIREBASE_PRIVATE_KEY").replace("\\n", "\n"),  # Properly format the private key
+    "client_email": os.getenv("FIREBASE_CLIENT_EMAIL"),
+    "client_id": os.getenv("FIREBASE_CLIENT_ID"),
+    "auth_uri": os.getenv("FIREBASE_AUTH_URI"),
+    "token_uri": os.getenv("FIREBASE_TOKEN_URI"),
+    "auth_provider_x509_cert_url": os.getenv("FIREBASE_AUTH_PROVIDER_X509_CERT_URL"),
+    "client_x509_cert_url": os.getenv("FIREBASE_CLIENT_X509_CERT_URL")
+}
 
-def initialize_firebase():
-    # Decode the base64 encoded JSON credentials
-    encoded_credentials = os.getenv('FIREBASE_CREDENTIALS_BASE64')
-    decoded_credentials = base64.b64decode(encoded_credentials).decode('utf-8')
-    firebase_credentials = json.loads(decoded_credentials)
-
-    # Initialize Firebase with the decoded credentials
-    cred = credentials.Certificate(firebase_credentials)
-    initialize_app(cred)
-
+# Initialize Firebase Admin with the constructed configuration
+cred = credentials.Certificate(firebase_config)
+firebase_admin.initialize_app(cred)
 
 # Initialize Firebase
-initialize_firebase()
+
 
 db = firestore.client()
 
