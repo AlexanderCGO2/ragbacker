@@ -17,11 +17,16 @@ import firebase_admin
 import base64
 from firebase_admin import credentials, firestore
 
+encoded_key = os.getenv('FIREBASE_PRIVATE_KEY_BASE64')
+
+# Decode the Base64 string
+decoded_key = base64.b64decode(encoded_key).decode('utf-8')
+
 firebase_config = {
     "type": os.getenv("FIREBASE_TYPE"),
     "project_id": os.getenv("FIREBASE_PROJECT_ID"),
     "private_key_id": os.getenv("FIREBASE_PRIVATE_KEY_ID"),
-    "private_key": os.getenv("FIREBASE_PRIVATE_KEY").replace("\\n", "\n"),  # Properly format the private key
+    "private_key": decoded_key, # Properly format the private key
     "client_email": os.getenv("FIREBASE_CLIENT_EMAIL"),
     "client_id": os.getenv("FIREBASE_CLIENT_ID"),
     "auth_uri": os.getenv("FIREBASE_AUTH_URI"),
