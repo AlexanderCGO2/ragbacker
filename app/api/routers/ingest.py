@@ -16,10 +16,20 @@ from llama_parse import LlamaParse
 import firebase_admin
 from firebase_admin import credentials, firestore
 
-cred_path = './firebase-adminsdk.json'  # Path to your Firebase credentials new
 
-cred = credentials.Certificate(cred_path)  # Path to your Firebase credentials
-firebase_admin.initialize_app(cred)
+def initialize_firebase():
+    # Decode the base64 encoded JSON credentials
+    encoded_credentials = os.getenv('FIREBASE_CREDENTIALS_BASE64')
+    decoded_credentials = base64.b64decode(encoded_credentials).decode('utf-8')
+    firebase_credentials = json.loads(decoded_credentials)
+
+    # Initialize Firebase with the decoded credentials
+    cred = credentials.Certificate(firebase_credentials)
+    initialize_app(cred)
+
+
+# Initialize Firebase
+initialize_firebase()
 
 db = firestore.client()
 
