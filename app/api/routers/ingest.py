@@ -101,7 +101,7 @@ def upload_file(file: UploadFile = File(...), config: FileLoaderConfig = Depends
             show_progress=True,  # this will show you a progress bar as the embeddings are created
             )
 
-        return {"message": "File uploaded but not processed"}
+        return {"message": "File processed successfully"}
 
     except Exception as e:
         logger.error(f"Failed to upload and process file due to an error: {e}", exc_info=True)
