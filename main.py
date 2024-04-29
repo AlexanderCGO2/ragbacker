@@ -17,6 +17,19 @@ from xml.etree import ElementTree
 import requests
 import urllib.parse
 from dotenv import load_dotenv
+from fastapi.middleware.cors import CORSMiddleware
+origins = [
+    "https://your-flutterflow-app.flutterflow.app",  # Add your allowed domain here
+    # You can add more domains if needed
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 app = FastAPI()
 
@@ -39,6 +52,18 @@ if environment == "dev":
         allow_methods=["*"],
         allow_headers=["*"],
     )
+origins = [
+    "https://zpunkt.flutterflow.app",  # Add your allowed domain here
+    # You can add more domains if needed
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
     # Redirect to documentation page when accessing base URL
     @app.get("/")
