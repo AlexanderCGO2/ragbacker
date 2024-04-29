@@ -14,6 +14,7 @@ from llama_index.core.storage import StorageContext
 from llama_index.core.indices import VectorStoreIndex
 from llama_parse import LlamaParse
 import firebase_admin
+import base64
 from firebase_admin import credentials, firestore
 
 
