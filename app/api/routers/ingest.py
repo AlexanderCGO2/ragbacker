@@ -13,6 +13,15 @@ from llama_index.vector_stores.pinecone import PineconeVectorStore
 from llama_index.core.storage import StorageContext
 from llama_index.core.indices import VectorStoreIndex
 from llama_parse import LlamaParse
+import firebase_admin
+from firebase_admin import credentials, firestore
+
+cred_path = './firebase-adminsdk.json'  # Path to your Firebase credentials
+
+cred = credentials.Certificate(cred_path)  # Path to your Firebase credentials
+firebase_admin.initialize_app(cred)
+
+db = firestore.client()
 
 # Router setup
 ingest_router = APIRouter()
@@ -101,7 +110,14 @@ def upload_file(file: UploadFile = File(...), config: FileLoaderConfig = Depends
             show_progress=True,  # this will show you a progress bar as the embeddings are created
             )
 
-        return {"message": "File processed successfully"}
+            doc_ref = db.collection('ingestedDocs').document(file.filename)
+            doc_ref.set({
+            'filename': file.filename,
+            'status': 'processed',
+            # Add more metadata as needed
+        })
+
+        return {"message": "File processed and added to Firestore successfully"}
 
     except Exception as e:
         logger.error(f"Failed to upload and process file due to an error: {e}", exc_info=True)
@@ -156,8 +172,22 @@ def process_files(data: Filenames, config: FileLoaderConfig = Depends()):
             storage_context=storage_context,
             show_progress=True,  # this will show you a progress bar as the embeddings are created
             )
+            # Store documents metadata in Firestore
+            if processed_documents:
+                # Assuming `processed_documents` are indexed the same as `valid_files`
+                for i, doc in enumerate(processed_documents):
+                    filename = os.path.basename(valid_files[i])
+                    doc_data = {
+                        'filename': filename,
+                        'content': str(doc),  # or any other method to serialize the document
+                        'status': 'processed'
+                    }
+                    doc_ref = db.collection('ingestedDocs').document(filename)
+                    doc_ref.set(doc_data)
 
-        return {"message": "Files processed successfully"}
+        return {"message": "Files processed and data added to Firestore successfully"}
+
+   
 
     except Exception as e:
         logger.error(f"Failed to process files due to an error: {e}", exc_info=True)
