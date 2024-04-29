@@ -65,9 +65,14 @@ def check_and_download_file(filename: str, temp_dir: str):
                     f.write(response_get.content)
                 return local_path
     return None
+def initialize_pinecone_store():
+    return PineconeVectorStore(
+        api_key=os.getenv("PINECONE_API_KEY"),
+        index_name=os.getenv("PINECONE_INDEX_NAME"),
+        environment=os.getenv("PINECONE_ENVIRONMENT")
+    )
 
 
-# sinngle file upload
 @ingest_router.post("/upload-file", response_model=dict)
 def upload_file(file: UploadFile = File(...), config: FileLoaderConfig = Depends()):
     logger = logging.getLogger(__name__)
@@ -87,13 +92,14 @@ def upload_file(file: UploadFile = File(...), config: FileLoaderConfig = Depends
             reader.file_extractor = {file_type: parser for file_type in supported_file_types}
             processed_documents = reader.load_data()
 
-            # Setup Pinecone integration if required
+            # Assuming processing includes embedding and storing to Pinecone
             if config.use_llama_parse:
                 store = PineconeVectorStore(
                     api_key=os.getenv("PINECONE_API_KEY"),
                     index_name=os.getenv("PINECONE_INDEX_NAME"),
                     environment=os.getenv("PINECONE_ENVIRONMENT"),
                 )
+            store = initialize_pinecone_store()
             storage_context = StorageContext.from_defaults(vector_store=store)
             VectorStoreIndex.from_documents(
             processed_documents,
@@ -101,7 +107,7 @@ def upload_file(file: UploadFile = File(...), config: FileLoaderConfig = Depends
             show_progress=True,  # this will show you a progress bar as the embeddings are created
             )
 
-        return {"message": "File uploaded but not processed"}
+        return {"message": "Files processed successfully"}
 
     except Exception as e:
         logger.error(f"Failed to upload and process file due to an error: {e}", exc_info=True)
@@ -112,7 +118,6 @@ def upload_file(file: UploadFile = File(...), config: FileLoaderConfig = Depends
         if os.path.exists(file_path):
             os.remove(file_path)
             logger.info(f"Cleaned up file at {file_path}")
-
 
 
 @ingest_router.post("/process-files", response_model=dict)
