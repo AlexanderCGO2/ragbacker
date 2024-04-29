@@ -25,7 +25,7 @@ init_settings()
 environment = os.getenv("ENVIRONMENT", "dev")  # Default to 'development' if not set
 load_dotenv()  # This loads the variables from a .env file in the same directory
 
-# Configuration using environment variables
+# Configuration using environment variables 
 base_url = os.getenv('WEBDAV_URL') + '/files/' + os.getenv('WEBDAV_LOGIN') + '/'
 auth = HTTPBasicAuth(os.getenv('WEBDAV_LOGIN'), os.getenv('WEBDAV_PASSWORD'))
 

@@ -16,7 +16,7 @@ from llama_parse import LlamaParse
 import firebase_admin
 from firebase_admin import credentials, firestore
 
-cred_path = './firebase-adminsdk.json'  # Path to your Firebase credentials
+cred_path = './firebase-adminsdk.json'  # Path to your Firebase credentials new
 
 cred = credentials.Certificate(cred_path)  # Path to your Firebase credentials
 firebase_admin.initialize_app(cred)
