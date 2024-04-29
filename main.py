@@ -31,64 +31,63 @@ load_dotenv()  # This loads the variables from a .env file in the same directory
 base_url = os.getenv('WEBDAV_URL') + '/files/' + os.getenv('WEBDAV_LOGIN') + '/'
 auth = HTTPBasicAuth(os.getenv('WEBDAV_LOGIN'), os.getenv('WEBDAV_PASSWORD'))
 
-if environment == "dev":
-    logger = logging.getLogger("uvicorn")
-    logger.warning("Running in development mode - allowing CORS for all origins")
-    app.add_middleware(
-        CORSMiddleware,
-        allow_origins=["*"],
-        allow_credentials=True,
-        allow_methods=["*"],
-        allow_headers=["*"],
-    )
-    origins = [
-        "https://zpunkt.flutterflow.app",  # Add your allowed domain here
-        # You can add more domains if needed
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+origins = [
+    "https://zpunkt.flutterflow.app",
+        # Add your allowed domain here
+    # You can add more domains if needed
 ]
 
-    app.add_middleware(
-        CORSMiddleware,
-        allow_origins=origins,
-        allow_credentials=True,
-        allow_methods=["*"],
-        allow_headers=["*"],
-    )
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
-    # Redirect to documentation page when accessing base URL
-    @app.get("/")
-    async def redirect_to_docs():
-        return RedirectResponse(url="/docs")
+# Redirect to documentation page when accessing base URL
+@app.get("/")
+async def redirect_to_docs():
+    return RedirectResponse(url="/docs")
 
-    app.include_router(ingest_router, prefix="/api/ingest")
+app.include_router(ingest_router, prefix="/api/ingest")
 
-    app.include_router(chat_router, prefix="/api/chat")
-    def list_contents(directory):
-        """List all contents of a WebDAV directory given a directory path."""
-        url = base_url + urllib.parse.quote(directory)
-        headers = {
-            "Depth": "1",  # Depth: 1 to list direct children only
-            "Content-Type": "application/xml"
-        }
-        propfind_body = '''
-        <d:propfind xmlns:d="DAV:">
-        <d:prop>
-            <d:resourcetype/>
-            <d:getcontenttype/>
-        </d:prop>
-        </d:propfind>
-        '''
-        response = requests.request("PROPFIND", url, headers=headers, data=propfind_body, auth=auth)
-        if response.status_code != 207:
-            return {"error": f"Error listing contents for {url}: {response.status_code}"}
-        tree = ElementTree.fromstring(response.content)
-        namespace = {'d': 'DAV:'}
-        items = []
-        for response in tree.findall('.//d:response', namespace):
-            href = response.find('.//d:href', namespace).text
-            resource_type = response.find('.//d:resourcetype', namespace)
-            item_type = 'directory' if resource_type.find('.//d:collection', namespace) is not None else 'file'
-            items.append({"href": href, "type": item_type})
-        return items
+app.include_router(chat_router, prefix="/api/chat")
+def list_contents(directory):
+    """List all contents of a WebDAV directory given a directory path."""
+    url = base_url + urllib.parse.quote(directory)
+    headers = {
+        "Depth": "1",  # Depth: 1 to list direct children only
+        "Content-Type": "application/xml"
+    }
+    propfind_body = '''
+    <d:propfind xmlns:d="DAV:">
+    <d:prop>
+        <d:resourcetype/>
+        <d:getcontenttype/>
+    </d:prop>
+    </d:propfind>
+    '''
+    response = requests.request("PROPFIND", url, headers=headers, data=propfind_body, auth=auth)
+    if response.status_code != 207:
+        return {"error": f"Error listing contents for {url}: {response.status_code}"}
+    tree = ElementTree.fromstring(response.content)
+    namespace = {'d': 'DAV:'}
+    items = []
+    for response in tree.findall('.//d:response', namespace):
+        href = response.find('.//d:href', namespace).text
+        resource_type = response.find('.//d:resourcetype', namespace)
+        item_type = 'directory' if resource_type.find('.//d:collection', namespace) is not None else 'file'
+        items.append({"href": href, "type": item_type})
+    return items
 
     @app.get("/files/{directory:path}")
     async def read_files(directory: str = Path(..., description="The directory to list contents from")):
