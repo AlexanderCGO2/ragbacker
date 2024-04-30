@@ -77,8 +77,8 @@ def list_contents(directory):
         items.append({"href": href, "type": item_type})
     return items
 
-    @app.get("/files/{directory:path}")
-    async def read_files(directory: str = Path(..., description="The directory to list contents from")):
+@app.get("/files/{directory:path}")
+async def read_files(directory: str = Path(..., description="The directory to list contents from")):
         """Endpoint to list files in a given directory of the WebDAV server."""
         return list_contents(directory)
 
