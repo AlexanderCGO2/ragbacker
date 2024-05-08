@@ -1,0 +1,56 @@
+# The name of LLM model to use.
+MODEL=gpt-4-turbo-preview
+
+# The OpenAI API key to use.
+OPENAI_API_KEY=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
+
+# The Llama Cloud API key.
+LLAMA_CLOUD_API_KEY=llx-3o7IQHyOSfSM5r3t5r17VuzJogIRCJgYuqMuhYPRSvAJr5DN
+
+# Configuration for Pinecone vector store
+# The Pinecone API key.
+PINECONE_API_KEY=ae327ed0-ff3e-4fe1-853a-48982c072e2c
+
+PINECONE_ENVIRONMENT=https://zpunktindex-a2a6c11.svc.aped-4627-b74a.pinecone.io
+
+PINECONE_INDEX_NAME=zpunktindex
+#PINECONE_ENVIRONMENT=https://llamindex-a2a6c11.svc.aped-4627-b74a.pinecone.io
+
+#PINECONE_INDEX_NAME=llamindex
+#Web_Dav
+WEBDAV_URL=https://cloud.z-punkt.de/remote.php/dav
+WEBDAV_LOGIN=allison
+WEBDAV_PASSWORD=HEa!!sd_EAV3MBN(=)vbrrPP
+DATABASE_URL=postgresql://u277b5mpgifgln:p97b787c83561ecf890581a7f7798d221360b63ea060bdcbeca48f95e3c51bdd1@c7gljno857ucsl.cluster-czrs8kj4isg7.us-east-1.rds.amazonaws.com:5432/d7o2r2i5fe0je
+
+# The address to start the backend app.
+APP_HOST=0.0.0.0
+
+APP_PORT=8000
+
+# Name of the embedding model to use.
+EMBEDDING_MODEL=text-embedding-3-large
+
+# Dimension of the embedding model to use.
+#EMBEDDING_DIM=1536
+
+# Temperature for sampling from the model.
+LLM_TEMPERATURE=1.0
+
+# Maximum number of tokens to generate.
+LLM_MAX_TOKENS=3000
+
+# The number of similar embeddings to return when retrieving documents.
+TOP_K=3
+
+# Custom system prompt.
+# Example:
+# SYSTEM_PROMPT="
+#  We have provided context information below.
+#  ---------------------
+#  {context_str}
+#  ---------------------
+#  Given this information, please answer the question: {query_str}
+#  "
+SYSTEM_PROMPT="you're a foresight expert and you're asked to provide a brief overview of the future of wordlwide developments in the next 10 years."
+

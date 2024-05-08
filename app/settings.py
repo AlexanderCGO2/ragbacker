@@ -40,5 +40,5 @@ def init_settings():
 
     Settings.llm = OpenAI(**llm_configs)
     Settings.embed_model = OpenAIEmbedding(**embedding_configs)
-    Settings.chunk_size = int(os.getenv("CHUNK_SIZE", "500"))
-    Settings.chunk_overlap = int(os.getenv("CHUNK_OVERLAP", "20"))
+    Settings.chunk_size = int(os.getenv("CHUNK_SIZE", "512"))
+    Settings.chunk_overlap = int(os.getenv("CHUNK_OVERLAP", "24"))

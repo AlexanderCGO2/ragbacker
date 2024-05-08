@@ -28,6 +28,7 @@ def llama_parse_parser():
 # Erstellen Sie den Parser einmal und verwenden Sie ihn in der gesamten Anwendung
 llama_parser = llama_parse_parser() if os.getenv("LLAMA_CLOUD_API_KEY") else None
 
+
 def get_file_documents(config: FileLoaderConfig):
     reader = SimpleDirectoryReader(
         config.data_dir,
@@ -38,11 +39,11 @@ def get_file_documents(config: FileLoaderConfig):
     else:
         # Unterstützung für verschiedene Dateitypen hinzufügen
         reader.file_extractor = {
-            ".pptx": lambda path: [slide.text for slide in Presentation(path).slides],
-            ".md": lambda path: open(path).read(),
-            ".jpg": lambda path: path,  # Beispiel: Pfad zurückgeben
-            ".png": lambda path: path,  # Beispiel: Pfad zurückgeben
-            ".docx": lambda path: Document(path).text,  # Sie müssen die geeignete Bibliothek für die Verarbeitung von .docx-Dateien verwenden
+            ".pptx": lambda path: {"text": [slide.text for slide in Presentation(path).slides], "filename": os.path.basename(path), "filetype": ".pptx"},
+            ".md": lambda path: {"text": open(path).read(), "filename": os.path.basename(path), "filetype": ".md"},
+            ".jpg": lambda path: {"text": path, "filename": os.path.basename(path), "filetype": ".jpg"},  # Beispiel: Pfad zurückgeben
+            ".png": lambda path: {"text": path, "filename": os.path.basename(path), "filetype": ".png"},  # Beispiel: Pfad zurückgeben
+            ".docx": lambda path: {"text": Document(path).text, "filename": os.path.basename(path), "filetype": ".docx"},  # Sie müssen die geeignete Bibliothek für die Verarbeitung von .docx-Dateien verwenden
             # Fügen Sie hier weitere Dateitypen hinzu...
         }
     return reader.load_data()
